@@ -21,6 +21,27 @@ public class CarGroup {
         cars.forEach(car -> car.move(numberGenerator));
     }
 
+    public CarGroup findWinners() {
+        int maxPosition = findMaxPosition();
+        List<Car> winners = findSamePositionWith(maxPosition);
+
+        return new CarGroup(winners);
+    }
+
+    private List<Car> findSamePositionWith(int maxPosition) {
+        return cars.stream()
+                .filter(car -> car.getPosition().getPosition() == maxPosition)
+                .toList();
+    }
+
+    private int findMaxPosition() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .map(CarPosition::getPosition)
+                .max(Integer::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("자동차의 최대 위치를 찾을 수 없습니다."));
+    }
+
     public List<Car> getCars() {
         return cars;
     }

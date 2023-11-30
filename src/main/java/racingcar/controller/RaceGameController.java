@@ -22,13 +22,14 @@ public class RaceGameController {
     }
 
     public void run() {
-        CarGroup carGroup = fetch(this::readCarNames);
-        TryCount tryCount = fetch(this::readTryCount);
+        CarGroup carGroup = readCarNames();
+        TryCount tryCount = readTryCount();
         RacingGame racingGame = RacingGame.of(carGroup);
         Stream.generate(() -> racingGame.play(numberGenerator))
                 .limit(tryCount.getCount())
                 .forEach(outputView::printResult);
-        
+        CarGroup winners = racingGame.findWinners();
+        outputView.printWinners(winners);
     }
 
     private TryCount readTryCount() {

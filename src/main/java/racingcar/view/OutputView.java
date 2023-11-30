@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarGroup;
+import racingcar.model.CarName;
 
 public class OutputView {
     private static final String EXCEPTION_FORMAT = "[ERROR] %s";
@@ -17,6 +18,16 @@ public class OutputView {
             printCarPosition(car);
         }
         printEmptyLine();
+    }
+
+    public void printWinners(CarGroup winners) {
+        List<Car> gameWinners = winners.getCars();
+        List<String> gameWinnersName = gameWinners.stream()
+                .map(Car::getName)
+                .map(CarName::getName)
+                .toList();
+        String winnersName = String.join(", ", gameWinnersName);
+        println(String.format("최종 우승자 : %s", winnersName));
     }
 
     private void printCarPosition(Car car) {

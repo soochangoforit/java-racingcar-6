@@ -15,4 +15,8 @@ public class RacingGame {
         carGroup.move(numberGenerator);
         return carGroup;
     }
+
+    public CarGroup findWinners() {
+        return carGroup.findWinners();
+    }
 }
