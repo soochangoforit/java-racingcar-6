@@ -16,4 +16,12 @@ public class CarGroup {
 
         return new CarGroup(cars);
     }
+
+    public void move(NumberGenerator numberGenerator) {
+        cars.forEach(car -> car.move(numberGenerator));
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

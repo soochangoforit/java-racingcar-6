@@ -8,6 +8,10 @@ public class CarPosition {
         this.position = position;
     }
 
+    public CarPosition move() {
+        return new CarPosition(position + 1);
+    }
+
     private void validate(int position) {
         if (position < 0) {
             throw new IllegalArgumentException("자동차의 위치는 음수가 될 수 없습니다.");
@@ -16,5 +20,9 @@ public class CarPosition {
 
     public static CarPosition defaultPosition() {
         return new CarPosition(0);
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

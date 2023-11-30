@@ -19,6 +19,7 @@ public class InputView {
     public int readTryCount() {
         println("시도할 회수는 몇회인가요?");
         String rawTryCount = readLine();
+        printEmptyLine();
         validateTryCount(rawTryCount);
         return convertToInt(rawTryCount);
     }

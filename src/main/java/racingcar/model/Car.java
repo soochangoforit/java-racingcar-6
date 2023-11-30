@@ -16,4 +16,17 @@ public class Car {
         return new Car(carName, carPosition);
     }
 
+    public void move(NumberGenerator numberGenerator) {
+        if (numberGenerator.generate(1, 9) >= 4) {
+            position = position.move();
+        }
+    }
+
+    public CarName getName() {
+        return name;
+    }
+
+    public CarPosition getPosition() {
+        return position;
+    }
 }

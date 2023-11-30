@@ -17,4 +17,8 @@ public class TryCount {
     public static TryCount from(int count) {
         return new TryCount(count);
     }
+
+    public int getCount() {
+        return count;
+    }
 }

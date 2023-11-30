@@ -20,4 +20,8 @@ public class CarName {
     public static CarName from(String name) {
         return new CarName(name);
     }
+
+    public String getName() {
+        return name;
+    }
 }
