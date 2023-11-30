@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import java.util.function.Supplier;
 import racingcar.model.CarGroup;
+import racingcar.model.TryCount;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -17,7 +18,12 @@ public class RaceGameController {
 
     public void run() {
         CarGroup carGroup = fetch(this::readCarNames);
-        inputView.readTryCount();
+        TryCount tryCount = fetch(this::readTryCount);
+    }
+
+    private TryCount readTryCount() {
+        int tryCount = inputView.readTryCount();
+        return TryCount.from(tryCount);
     }
 
     private CarGroup readCarNames() {

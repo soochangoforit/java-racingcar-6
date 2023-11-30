@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.view.validator.BlankValidator;
 import racingcar.view.validator.CarNamesValidator;
+import racingcar.view.validator.DigitsOnlyValidator;
 
 public class InputView {
 
@@ -15,15 +16,16 @@ public class InputView {
         return split(",", carNames);
     }
 
-    public void readTryCount() {
+    public int readTryCount() {
         println("시도할 회수는 몇회인가요?");
         String rawTryCount = readLine();
         validateTryCount(rawTryCount);
+        return convertToInt(rawTryCount);
     }
 
     private void validateTryCount(String rawTryCount) {
         BlankValidator.validate(rawTryCount);
-        
+        DigitsOnlyValidator.validate(rawTryCount);
     }
 
     private void validateCarNames(String carNames) {
